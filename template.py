@@ -2,14 +2,18 @@ import os
 
 def get_input():
     with open('./input.txt') as f:
-        final = [l.rstrip().split() for l in f.readline()]
-    with open('./example.txt') as f:
-        example = [l.rstrip().split() for l in f.readline()]
-    return example, final
+        inp = [l.rstrip().split() for l in f.readline()]
+    return inp
 
-def sol(example, final):
+def part1(inp):
+    pass
+
+def part2(inp):
     pass
 
 if __name__ == "__main__":
-    example, final = get_input()
+    inp = get_input()
+
+    part1(inp)
+    # part2(inp)
 

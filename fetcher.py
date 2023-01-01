@@ -1,3 +1,4 @@
+#! /opt/homebrew/bin/python3
 import requests
 import os
 import shutil
@@ -7,30 +8,25 @@ from typing import List, Dict
 
 load_dotenv()
 
-def make_folder(day: int, example: str, inp: str):
+def make_folder(day: int, inp: str):
     if not os.path.isdir(f'./{day}'):
         os.makedirs(f'./{day}')
 
     with open(f'./{day}/input.txt', 'w') as inp_file:
         inp_file.write(inp)
-    with open(f'./{day}/ex.txt', 'w') as ex_file:
-        ex_file.write(example)
 
     if not os.path.isfile(f'./{day}/{day}.py'):
         shutil.copy('template.py', f'./{day}/{day}.py')
 
-    print(f"input and example files fetched. Template is ready, Happy coding!")
+    print(f"input fetched. Template is ready, Happy coding!")
 
 
 def get_data(day_list: List, headers: Dict):
     for day in day_list:
         inp_resp = requests.get(f'https://adventofcode.com/2022/day/{day}/input', headers = headers)
-        ex_resp = requests.get(f'https://adventofcode.com/2022/day/{day}', headers = headers)
-
         input_data = inp_resp.text.strip()
-        example_data = ex_resp.text.split('<pre><code>')[1].split('</code></pre>')[0]
 
-        make_folder(day, example_data, input_data)
+        make_folder(day, input_data)
 
 def init():
     parser = argparse.ArgumentParser(
