@@ -2,7 +2,7 @@ import os
 
 def get_input():
     with open('./input.txt') as f:
-        inp = [l.rstrip().split() for l in f.readline()]
+        inp = [l.rstrip().split() for l in f.readlines()]
     return inp
 
 def part1(inp):

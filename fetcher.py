@@ -25,6 +25,9 @@ def get_data(day_list: List, headers: Dict):
     for day in day_list:
         inp_resp = requests.get(f'https://adventofcode.com/2022/day/{day}/input', headers = headers)
         input_data = inp_resp.text.strip()
+        if inp_resp.status_code != 200:
+            print(f"Problem fetching input, Resp : {inp_resp.text}")
+            exit()
 
         make_folder(day, input_data)
 
