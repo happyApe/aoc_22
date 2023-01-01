@@ -31,15 +31,16 @@ def part1(stacks, instructions):
     [print(stack[-1], end="") for stack in stacks]
 
 
-
-
-
-def part2(inp):
-    pass
+def part2(stacks, instructions):
+    for instr in instructions:
+        n, i, f = parse(instr)
+        stacks[f].extend(stacks[i][-n:])
+        stacks[i]=stacks[i][:-n]
+    [print(stack[-1], end="") for stack in stacks]
 
 if __name__ == "__main__":
     inp = get_input()
 
-    part1(inp[0],inp[1])
-    # part2(inp)
+    # part1(inp[0],inp[1])
+    part2(inp[0],inp[1])
 
