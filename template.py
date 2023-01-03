@@ -15,5 +15,5 @@ if __name__ == "__main__":
     inp = get_input()
 
     part1(inp)
-    # part2(inp)
+    part2(inp)
 
